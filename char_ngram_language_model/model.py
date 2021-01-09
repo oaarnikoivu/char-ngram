@@ -4,7 +4,7 @@ import numpy as np
 from collections import defaultdict 
 from itertools import product
 from string import ascii_lowercase
-from helpers import preprocess_line, read_distribution, extract_counts
+from helpers import preprocess_line, read_distribution, get_counts
 
 # Vocabulary 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '.', ' ', '0', '#']
@@ -17,9 +17,9 @@ class TrigramLanguageModel:
     def __init__(self, infile, alpha=0.3, smoothing=False, lambdas=[], interpolate=False): 
         
         # Store trigram, bigram and unigram counts in separate dictionaries 
-        self.trigram_counts  = extract_counts(infile, n_gram_range=3)
-        self.bigram_counts  = extract_counts(infile, n_gram_range=2)
-        self.unigram_counts  = extract_counts(infile, n_gram_range=1)
+        self.trigram_counts  = get_counts(infile, n_gram_range=3)
+        self.bigram_counts  = get_counts(infile, n_gram_range=2)
+        self.unigram_counts  = get_counts(infile, n_gram_range=1)
 
         # Estimated probabilities 
         self.train_probabilities = defaultdict(float)

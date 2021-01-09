@@ -19,7 +19,7 @@ def preprocess_line(str_line):
         processed_line = "".join(processed_chars)
         return processed_line.lower()
 
-def extract_counts(infile, n_gram_range):
+def get_counts(infile, n_gram_range):
     n_gram_counts = defaultdict(int)
 
     # if n_gram_range is 1, extract unigrams 

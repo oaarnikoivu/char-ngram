@@ -1,7 +1,7 @@
 import re
 import sys 
 from model import TrigramLanguageModel
-from helpers import generate_from_LM, read_distribution
+from helpers import create_from_lang_model, read_distribution
 
 if len(sys.argv) != 2:
     print("Usage: ", sys.argv[0], "<training_file>")
@@ -23,7 +23,7 @@ outfile.close()
 distribution = read_distribution(distribution_file)
 
 print('Generated sequence: ')
-print(generate_from_lang_model(distribution, N=300))
+print(create_from_lang_model(distribution, N=300))
 
 entropy, perplexity = model.perplexity(testfile, distribution)
 
